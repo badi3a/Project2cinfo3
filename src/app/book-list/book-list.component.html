@@ -1,4 +1,8 @@
 <h1>{{title}}</h1>
+<input type="text" name="inputText"
+       placeholder="a new title"
+       class="form-control" [(ngModel)]="title">
+<br>
 <table class="table table-info">
   <thead>
     <tr>
@@ -12,7 +16,7 @@
     </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let book of list">
+  <tr *ngFor="let book of list, let i= index">
     <td>{{book.id}}</td>
     <td>{{book.title}}</td>
     <td>{{book.author}}</td>
@@ -20,9 +24,14 @@
     <td>{{book.quantity}}</td>
     <td>
       {{book.nbrLike}}
-      <button class="btn btn-sm btn-outline-danger">like </button>
+      <button class="btn btn-sm btn-outline-danger" (click)="incrementLike(book)">
+        like
+      </button>
     </td>
-    <td><button class="btn btn-sm btn-warning">Buy this book</button></td>
+    <td>
+      <button class="btn btn-sm btn-warning" [disabled]="book.quantity==0" (click)="buyBook(i)">
+      Buy this book 1</button>
+    </td>
   </tr>
   </tbody>
 </table>

@@ -12,7 +12,7 @@ export class BookListComponent implements OnInit {
   constructor() {
   }
   ngOnInit(): void {
-    this.title = "Book Store";
+    this.title = "test";
     this.list= [
       { id:12,
         title:'AngularJS',
@@ -47,6 +47,16 @@ export class BookListComponent implements OnInit {
         quantity: 0
       }
     ]
+  }
+
+  incrementLike(book: Book): void{
+    let i = this.list.indexOf(book);
+    if(i!=-1){
+      this.list[i].nbrLike++;
+    }
+  }
+  buyBook(i:number):void{
+    this.list[i].quantity--;
   }
 
 }
