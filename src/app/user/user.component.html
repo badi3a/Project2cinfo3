@@ -1,0 +1,13 @@
+
+  <div *ngIf="user.role==role || role=='all'">
+    <img src="{{user.picture}}" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">{{user.username}}</h5>
+      <p class="card-text">{{user.role}}</p>
+      <button class="btn btn-primary" [disabled]="user.role=='admin'"
+      (click)="notifyParentDelete()">
+        Delete
+      </button>
+    </div>
+  </div>
+

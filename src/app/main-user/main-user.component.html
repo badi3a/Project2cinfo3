@@ -17,19 +17,11 @@
   </div>
 
   <div class="row">
-    <div *ngFor="let user of list" class="card col-3 m-lg-2" >
-      <div *ngIf="user.role==role || role=='all'">
-        <img src="{{user.picture}}" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">{{user.username}}</h5>
-          <p class="card-text">{{user.role}}</p>
-          <button class="btn btn-primary" [disabled]="user.role=='admin'"
-                  (click)="delete(user)">
-            Delete
-          </button>
-        </div>
-      </div>
-    </div>
+  <app-user *ngFor="let object of list"
+            [user]="object" [role]="role"
+            class="card col-3 m-lg-2" (deleteEvent)="delete($event)">
+
+  </app-user>
   </div>
 
 

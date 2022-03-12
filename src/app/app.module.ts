@@ -11,6 +11,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BookFormComponent } from './book-form/book-form.component';
 import { UserFormComponent } from './user-form/user-form.component';
+import { UserComponent } from './user/user.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { UserFormComponent } from './user-form/user-form.component';
     MainUserComponent,
     NotFoundComponent,
     BookFormComponent,
-    UserFormComponent
+    UserFormComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
