@@ -1,0 +1,48 @@
+<h1>Add a new Book</h1>
+<form #f="ngForm">
+  <div class="form-group">
+    <label>Title:</label>
+    <input type="text" name="title" class="form-control"
+           [(ngModel)]="book.title" required minlength="5"
+           pattern="[a-zA-Z]+$" #t="ngModel">
+  </div><br>
+  <!---msg alert---->
+  <div class="alert alert-danger" *ngIf="t.invalid && t.touched">
+    <div *ngIf="t.hasError('required')">this field is required</div>
+    <div *ngIf="t.hasError('minlength')">this field minlength is equal to 5</div>
+    <div *ngIf="t.hasError('pattern')">pattern error</div>
+  </div>
+
+  <div class="form-group">
+    <label>author:</label>
+    <input type="text" name="author" class="form-control"
+           [(ngModel)]="book.author" required #a="ngModel">
+  </div><br>
+  <!---msg alert---->
+  <div class="alert alert-danger" *ngIf="a.invalid">
+    author this field is required
+  </div>
+  <div class="form-group">
+    <label>price:</label>
+    <input type="text" name="price" class="form-control"
+           [(ngModel)]="book.price" required #p="ngModel">
+  </div><br>
+  <!---msg alert---->
+  <div class="alert alert-danger" *ngIf="p.invalid">
+     this field is required
+  </div>
+  <div class="form-group">
+    <label>quantity:</label>
+    <input type="text" name="quantity" class="form-control"
+           [(ngModel)]="book.quantity" required #q="ngModel">
+  </div><br>
+  <!---msg alert---->
+  <div class="alert alert-danger" *ngIf="q.invalid">
+    author this field is required
+  </div>
+
+  <button class="btn btn-success" (click)="save()"
+          [disabled]="f.invalid">save
+  </button>
+</form>
+

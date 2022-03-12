@@ -9,6 +9,7 @@ import { MainUserComponent } from './main-user/main-user.component';
 import {RouterModule, Routes} from "@angular/router";
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AppRoutingModule } from './app-routing.module';
+import { BookFormComponent } from './book-form/book-form.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { AppRoutingModule } from './app-routing.module';
     FooterComponent,
     BookListComponent,
     MainUserComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    BookFormComponent
   ],
   imports: [
     BrowserModule,
