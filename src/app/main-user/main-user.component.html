@@ -2,7 +2,8 @@
         (click)="show()">
   add a new user
 </button>
-<app-user-form [hidden]="!showForm"></app-user-form>
+<app-user-form [hidden]="!showForm"
+(notifParentNewUser)="saveUser($event)"></app-user-form>
 
 <div [hidden]="showForm">
   <div class="form-group">

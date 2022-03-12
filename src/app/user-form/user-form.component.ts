@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 import {User} from "../model/user";
 
 @Component({
@@ -8,14 +8,17 @@ import {User} from "../model/user";
 })
 export class UserFormComponent implements OnInit {
   user: User;
+  @Output() notifParentNewUser= new EventEmitter<User>();
   constructor() { }
 
   ngOnInit(): void {
     this.user= new User()
   }
   save(){
-    //push the object
-    console.log("test");
+    //notify the parent component
+    console.log(this.user);
+    this.notifParentNewUser.emit(this.user)
+
 
   }
 }

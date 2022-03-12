@@ -41,4 +41,8 @@ export class MainUserComponent implements OnInit {
   show(){
     this.showForm=true;
   }
+  saveUser(u:User){
+    this.list.push(u);
+    this.showForm = false;
+  }
 }
