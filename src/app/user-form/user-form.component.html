@@ -1,0 +1,43 @@
+<h1>Add a new User</h1>
+<form #f="ngForm">
+  <div class="form-group">
+    <label>email</label>
+    <input type="text" name="email" class="form-control"
+           [(ngModel)]="user.email" required #e="ngModel">
+  </div>
+  <div class="alert alert-danger" *ngIf="e.invalid && e.touched">
+    error: Email required!
+  </div>
+  <div class="form-group">
+    <label>Username</label>
+    <input type="text" name="userName" class="form-control"
+           [(ngModel)]="user.username" required #user_name="ngModel">
+  </div>
+  <div class="alert alert-danger" *ngIf="user_name.invalid && user_name.touched">
+    error: Name required!
+  </div>
+  <div class="form-group">
+    <label>role</label>
+    <select required name="role" class="form-control"
+            [(ngModel)]="user.role"  #user_role="ngModel">
+      <option value="user"> user</option>
+      <option value="admin"> admin</option>
+    </select>
+  </div>
+  <div class="alert alert-danger" *ngIf="user_role.invalid && user_role.touched">
+    error: User role required!
+  </div>
+  <div class="form-group">
+    <label>picture</label>
+    <input type="text" name="picture" class="form-control" required
+           [(ngModel)]="user.picture" #user_image="ngModel">
+  </div>
+  <div class="alert alert-danger" *ngIf="user_image.invalid && user_image.touched">
+    error: User image required!
+  </div>
+
+  <button class="btn btn-success" (click)="save()"
+          [disabled]="f.invalid">
+    save
+  </button>
+</form>
