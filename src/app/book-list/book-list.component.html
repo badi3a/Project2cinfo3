@@ -1,4 +1,7 @@
 <h1>{{title}}</h1>
+<div  class="alert alert-danger">
+  book number out of stock :{{getStatBook()}}
+</div>
 <input type="text" name="inputText"
        placeholder="a new title"
        class="form-control" [(ngModel)]="title">

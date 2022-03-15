@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Book} from "../model/book";
+import {BookService} from "../services/book.service";
 
 @Component({
   selector: 'app-book-form',
@@ -8,8 +9,8 @@ import {Book} from "../model/book";
 })
 export class BookFormComponent implements OnInit {
   book: Book;
-  list: Book[];
-  constructor() { }
+
+  constructor(private bookService:BookService) { }
 
   ngOnInit(): void {
     this.book= new Book();
@@ -17,7 +18,7 @@ export class BookFormComponent implements OnInit {
   save(){
     //
     this.book.nbrLike=0;
-    this.list.push(this.book)
+    this.bookService.list.push(this.book);
   }
 
 }

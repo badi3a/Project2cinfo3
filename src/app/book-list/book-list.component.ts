@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Book} from "../model/book";
+import {BookService} from "../services/book.service";
+import {CalculService} from "../services/calcul.service";
 
 @Component({
   selector: 'app-book-list',
@@ -9,44 +11,12 @@ import {Book} from "../model/book";
 export class BookListComponent implements OnInit {
   title: string;
   list: Book[];
-  constructor() {
+  constructor(private bookService: BookService,
+              private calcul: CalculService ) {
   }
   ngOnInit(): void {
     this.title = "test";
-    this.list= [
-      { id:12,
-        title:'AngularJS',
-        author:'Name Name',
-        abstract: 'a good book',
-        price: 100,
-        nbrLike:12,
-        quantity: 10
-        },
-      { id:13,
-        title:'Symfony',
-        author:'SensioLabs',
-        abstract: 'a good book',
-        price: 54,
-        nbrLike:34,
-        quantity: 0
-      },
-      { id:12,
-        title:'AngularJS',
-        author:'Name Name',
-        abstract: 'a good book',
-        price: 100,
-        nbrLike:12,
-        quantity: 10
-      },
-      { id:13,
-        title:'Symfony',
-        author:'SensioLabs',
-        abstract: 'a good book',
-        price: 54,
-        nbrLike:34,
-        quantity: 0
-      }
-    ]
+    this.list= this.bookService.list;
   }
 
   incrementLike(book: Book): void{
@@ -58,5 +28,7 @@ export class BookListComponent implements OnInit {
   buyBook(i:number):void{
     this.list[i].quantity--;
   }
-
+ getStatBook(){
+    return this.calcul.getStat(this.list, 'quantity',0)
+ }
 }
