@@ -35,6 +35,10 @@
       <button class="btn btn-sm btn-warning" [disabled]="book.quantity==0" (click)="buyBook(i)">
       Buy this book 1</button>
     </td>
+    <td>
+      <button class="btn btn-sm btn-warning"  (click)="delete(book.id, i)">
+        delete book </button>
+    </td>
   </tr>
   </tbody>
 </table>

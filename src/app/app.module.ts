@@ -12,6 +12,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { BookFormComponent } from './book-form/book-form.component';
 import { UserFormComponent } from './user-form/user-form.component';
 import { UserComponent } from './user/user.component';
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { UserComponent } from './user/user.component';
   imports: [
     BrowserModule,
     FormsModule,
+    HttpClientModule,
     AppRoutingModule
   ],
   providers: [],

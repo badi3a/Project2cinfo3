@@ -1,43 +1,27 @@
 import { Injectable } from '@angular/core';
 import {Book} from "../model/book";
-
+import {environment} from "../../environments/environment";
+import {HttpClient} from "@angular/common/http";
 @Injectable({
   providedIn: 'root'
 })
 export class BookService {
-  list: Book[] =  [
-    { id:12,
-      title:'AngularJS',
-      author:'Name Name',
-      abstract: 'a good book',
-      price: 100,
-      nbrLike:12,
-      quantity: 10
-    },
-    { id:13,
-      title:'Symfony',
-      author:'SensioLabs',
-      abstract: 'a good book',
-      price: 54,
-      nbrLike:34,
-      quantity: 0
-    },
-    { id:12,
-      title:'AngularJS',
-      author:'Name Name',
-      abstract: 'a good book',
-      price: 100,
-      nbrLike:12,
-      quantity: 10
-    },
-    { id:13,
-      title:'Symfony',
-      author:'SensioLabs',
-      abstract: 'a good book',
-      price: 54,
-      nbrLike:34,
-      quantity: 0
-    }
-  ];
-  constructor() { }
+   url: string = environment.url;
+   constructor(private http: HttpClient) { }
+   //get Books
+   getList(){
+     return this.http.get<Book[]>(this.url)
+   }
+   //add a new Book
+  addBook(book:Book){
+     return this.http.post(this.url,book )
+  }
+  //delete a book
+  deleteBook(id: number){
+     return this.http.delete(this.url+id)
+  }
+  //update a book
+  updateBook(book: Book){
+     return this.http.put(this.url+book.id, book)
+  }
 }

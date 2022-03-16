@@ -18,7 +18,9 @@ export class BookFormComponent implements OnInit {
   save(){
     //
     this.book.nbrLike=0;
-    this.bookService.list.push(this.book);
+    this.bookService.addBook(this.book).subscribe();
+    //notify
+
   }
 
 }

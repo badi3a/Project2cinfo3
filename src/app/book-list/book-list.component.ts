@@ -16,8 +16,12 @@ export class BookListComponent implements OnInit {
   }
   ngOnInit(): void {
     this.title = "test";
-    this.list= this.bookService.list;
+
+    this.bookService.getList().subscribe(
+      (data:Book[])=> this.list=data
+    );
   }
+
 
   incrementLike(book: Book): void{
     let i = this.list.indexOf(book);
@@ -31,4 +35,14 @@ export class BookListComponent implements OnInit {
  getStatBook(){
     return this.calcul.getStat(this.list, 'quantity',0)
  }
+
+
+  delete(id: number, i: number): void {
+
+     this.bookService.deleteBook(id).subscribe(
+       () => this.list.splice(i, 1)
+     );
+
+  }
+
 }
